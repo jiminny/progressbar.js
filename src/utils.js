@@ -16,7 +16,7 @@ function extend(destination, source, recursive) {
             var sourceVal = source[attrName];
             if (recursive && isObject(destVal) && isObject(sourceVal)) {
                 destination[attrName] = extend(destVal, sourceVal, recursive);
-            } else {
+            } else if (attrName !== '__proto__' && attrName !== 'constructor') {
                 destination[attrName] = sourceVal;
             }
         }
